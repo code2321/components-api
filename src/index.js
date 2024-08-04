@@ -1,13 +1,6 @@
-async function handleComponentRequest(id) {
-    const component = components[id];
-    if (component) {
-        return new Response(JSON.stringify(component), {
-            headers: { 'Content-Type': 'application/json' }
-        });
-    } else {
-        return new Response('Component Not Found', { status: 404 });
-    }
-}
+addEventListener('fetch', event => {
+    event.respondWith(handleRequest(event.request));
+});
 
 async function handleRequest(request) {
     const url = new URL(request.url);
@@ -21,8 +14,38 @@ async function handleRequest(request) {
 
     switch (base) {
         case 'components':
-            return handleBloodbankRequest(id, url.searchParams);
+            return handleComponentRequest(id);
         default:
             return new Response('Not Found', { status: 404 });
     }
 }
+
+async function handleComponentRequest() {
+    try {
+        // Fetch data from the external URL
+        const response = await fetch('https://prajapatihet.github.io/code-canvas/components/cards/cards.json', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        // Check if the response is okay
+        if (!response.ok) {
+            return new Response('Failed to fetch data', { status: response.status });
+        }
+
+        // Parse the JSON data
+        const data = await response.json();
+
+        // Return all data
+        return new Response(JSON.stringify(data), {
+            headers: { 'Content-Type': 'application/json' }
+        });
+    } catch (error) {
+        // Handle any errors that occurred during fetching or processing
+        return new Response('Internal Server Error', { status: 500 });
+    }
+}
+
+
