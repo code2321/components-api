@@ -7,7 +7,7 @@ async function handleRequest(request) {
     const segments = url.pathname.split('/').filter(segment => segment);
 
     if (segments.length === 0) {
-         return new Response('Not Found', { status: 404 });
+        return new Response('Not Found', { status: 404 });
     }
 
     const [base, id] = segments;
@@ -38,14 +38,21 @@ async function handleComponentRequest() {
         // Parse the JSON data
         const data = await response.json();
 
-        // Return all data
+        // Return all data with CORS headers
+        const corsHeaders = {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+        };
+
         return new Response(JSON.stringify(data), {
-            headers: { 'Content-Type': 'application/json' }
+            headers: {
+                'Content-Type': 'application/json',
+                ...corsHeaders
+            }
         });
     } catch (error) {
         // Handle any errors that occurred during fetching or processing
         return new Response('Internal Server Error', { status: 500 });
     }
 }
-
-
