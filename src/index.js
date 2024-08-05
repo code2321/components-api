@@ -10,20 +10,32 @@ async function handleRequest(request) {
         return new Response('Not Found', { status: 404 });
     }
 
-    const [base, id] = segments;
+    const [base, category, file] = segments;
 
     switch (base) {
         case 'components':
-            return handleComponentRequest(id);
+            return handleComponentRequest(category, file);
         default:
             return new Response('Not Found', { status: 404 });
     }
 }
 
-async function handleComponentRequest() {
+async function handleComponentRequest(category, file) {
+    const fetchUrls = {
+        'accordions': 'https://prajapatihet.github.io/code-canvas/components/accordions/accordions.json',
+        'backgrounds': 'https://prajapatihet.github.io/code-canvas/components/backgrounds/backgrounds.json',
+        'breadcrumbs': 'https://prajapatihet.github.io/code-canvas/components/breadcrumbs/breadcrumbs.json'
+    };
+
+    const url = fetchUrls[category];
+
+    if (!url || file !== `${category}.json`) {
+        return new Response('Not Found', { status: 404 });
+    }
+
     try {
         // Fetch data from the external URL
-        const response = await fetch('https://prajapatihet.github.io/code-canvas/components/cards/cards.json', {
+        const response = await fetch(url, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
