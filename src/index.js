@@ -66,7 +66,8 @@ async function handleComponentRequest(category, file) {
         'accordions': 'https://prajapatihet.github.io/code-canvas/components/accordions/accordions.json',
         'backgrounds': 'https://prajapatihet.github.io/code-canvas/components/backgrounds/backgrounds.json',
         'breadcrumbs': 'https://prajapatihet.github.io/code-canvas/components/breadcrumbs/breadcrumbs.json',
-        'buttons': 'https://prajapatihet.github.io/code-canvas/components/buttons/buttons.json'
+        'buttons': 'https://prajapatihet.github.io/code-canvas/components/buttons/buttons.json',
+        'cards': 'https://prajapatihet.github.io/code-canvas/components/cards/cards.json'
     };
 
     const url = fetchUrls[category];
