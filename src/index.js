@@ -67,7 +67,11 @@ async function handleComponentRequest(category, file) {
         'backgrounds': 'https://prajapatihet.github.io/code-canvas/components/backgrounds/backgrounds.json',
         'breadcrumbs': 'https://prajapatihet.github.io/code-canvas/components/breadcrumbs/breadcrumbs.json',
         'buttons': 'https://prajapatihet.github.io/code-canvas/components/buttons/buttons.json',
-        'cards': 'https://prajapatihet.github.io/code-canvas/components/cards/cards.json'
+        'cards': 'https://prajapatihet.github.io/code-canvas/components/cards/cards.json',
+        'carousels': 'https://prajapatihet.github.io/code-canvas/components/carousels/carousels.json',
+        'dropdowns': 'https://prajapatihet.github.io/code-canvas/components/dropdowns/dropdowns.json',
+        'footers': 'https://prajapatihet.github.io/code-canvas/components/footers/footers.json',
+        'forms': 'https://prajapatihet.github.io/code-canvas/components/forms/forms.json'
     };
 
     const url = fetchUrls[category];
