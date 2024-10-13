@@ -72,6 +72,7 @@ async function handleComponentRequest(category, file) {
         'dropdowns': 'https://prajapatihet.github.io/code-canvas/components/dropdowns/dropdowns.json',
         'footers': 'https://prajapatihet.github.io/code-canvas/components/footers/footers.json',
         'forms': 'https://prajapatihet.github.io/code-canvas/components/forms/forms.json'
+        // Add more screens and components screen
     };
 
     const url = fetchUrls[category];
