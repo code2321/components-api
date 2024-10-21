@@ -25,6 +25,7 @@ async function handleRequest(request) {
     }
 }
 
+//Main entry point to enter this page
 async function handleHtmlRequest() {
     const htmlUrl = 'https://prajapatihet.github.io/hospitalinfo-api/components.html';
 
@@ -60,7 +61,7 @@ async function handleHtmlRequest() {
         return new Response('Internal Server Error', { status: 500 });
     }
 }
-
+// List of possible endpoints for this API
 async function handleComponentRequest(category, file) {
     const fetchUrls = {
         'accordions': 'https://prajapatihet.github.io/code-canvas/components/accordions/accordions.json',
