@@ -25,7 +25,7 @@ async function handleRequest(request) {
     }
 }
 
-//Main entry point to enter this page
+// Main entry point to enter this page
 async function handleHtmlRequest() {
     const htmlUrl = 'https://prajapatihet.github.io/hospitalinfo-api/components.html';
 
